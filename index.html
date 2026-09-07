@@ -12,6 +12,7 @@
             --surface-color: #1a2235;
             --primary-accent: #00e5ff;
             --secondary-accent: #b052fd;
+            --warning-accent: #ffb86c;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
         }
@@ -49,7 +50,6 @@
         header {
             text-align: center;
             padding: 4rem 0 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .hero-logo {
@@ -75,7 +75,7 @@
         .subtitle {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
         }
 
@@ -96,19 +96,43 @@
             box-shadow: 0 0 15px var(--primary-accent);
         }
 
-        /* Call to Action Banner */
-        .cta-banner {
-            background: linear-gradient(90deg, rgba(26,34,53,1) 0%, rgba(176,82,253,0.15) 100%);
-            border-left: 4px solid var(--secondary-accent);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 3rem 0;
-            text-align: center;
+        .btn-warning {
+            background: rgba(255, 184, 108, 0.1);
+            color: var(--warning-accent);
+            border-color: var(--warning-accent);
+            margin-top: 1rem;
         }
 
-        .cta-banner h2 {
+        .btn-warning:hover {
+            background: var(--warning-accent);
+            color: #000;
+            box-shadow: 0 0 15px var(--warning-accent);
+        }
+
+        /* Massive Development Banner */
+        .dev-banner {
+            background: linear-gradient(135deg, rgba(255, 184, 108, 0.15) 0%, rgba(255, 85, 85, 0.15) 100%);
+            border: 2px dashed var(--warning-accent);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin: 2rem 0 4rem;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 184, 108, 0.1);
+        }
+
+        .dev-banner h2 {
+            color: var(--warning-accent);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .dev-banner p {
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
             color: #fff;
-            margin-bottom: 0.5rem;
         }
 
         /* Content Grid */
@@ -121,7 +145,7 @@
 
         .card {
             background-color: var(--surface-color);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: transform 0.3s ease;
@@ -135,7 +159,10 @@
         .card h3 {
             color: #fff;
             margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.35rem;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
         /* Code Block */
@@ -164,14 +191,51 @@
             padding: 1.5rem;
             overflow-x: auto;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #c9d1d9;
+            line-height: 1.5;
         }
 
         .keyword { color: #ff7b72; }
         .type { color: #79c0ff; }
         .function { color: #d2a8ff; }
         .comment { color: #8b949e; font-style: italic; }
+
+        /* Roadmap Section */
+        .roadmap {
+            background: rgba(26,34,53,0.5);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary-accent);
+            margin-top: 3rem;
+        }
+
+        .roadmap h3 {
+            color: var(--secondary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .roadmap ul {
+            list-style-type: none;
+        }
+
+        .roadmap li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .roadmap li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+        }
+
+        .roadmap li.done::before {
+            content: '✓';
+            color: #50fa7b;
+        }
 
         footer {
             text-align: center;
@@ -191,39 +255,57 @@
             border-radius: 8px;
             object-fit: cover;
         }
+        
+        .badge {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container">
+            <span class="badge">OPEN SOURCE • MIT LICENSE</span>
             <img src="LOGO.png" alt="Ion+ Logo" class="hero-logo">
-            <h1>The Ion+ Language</h1>
-            <p class="subtitle">A low-level, systems-oriented programming language bridging Python's elegant frontend architecture with the raw power of LLVM.</p>
-            <a href="https://github.com/YashAryaPersonal/ion-plus" class="btn" target="_blank">View on GitHub</a>
+            <h1>Ion+ Programming Language</h1>
+            <p class="subtitle">A hyper-powerful, low-level OOP language aiming to combine the memory-aware architecture of C++ with a clean, modern syntax built in Python.</p>
         </div>
     </header>
 
     <main class="container">
-        <div class="cta-banner">
-            <h2>🚀 We need developers and contributors</h2>
-            <p>Ion+ is an ambitious open-source project (Apache 2.0). If you are passionate about compilers, AST design, <strong>LLVM</strong>, or building a powerful low-level OOP language inspired by C++, we invite all respectful developers to join us.</p>
+        
+        <div class="dev-banner">
+            <h2>⚠️ Ion+ is in Active Development</h2>
+            <p>We are currently building the frontend compiler architecture from the ground up. The Lexer is fully functional, but we need <strong>your</strong> help to conquer the Abstract Syntax Tree (AST), Parser, and eventually, the LLVM Backend.</p>
+            <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 2rem;">If you are passionate about compiler design, language engineering, Python tooling, or LLVM, join our community of respectful developers.</p>
+            <a href="https://github.com/YashAryaPersonal/ion-plus" class="btn btn-warning" target="_blank">View Repo & Contribute on GitHub</a>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Frontend Pipeline</h3>
-                <p>Built entirely in Python, the Ion+ frontend currently features a robust regex-based Lexer, comprehensive token enumeration, and indentation-sensitive block processing.</p>
+        <section class="overview">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Architecture & Core Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>1. Python Frontend</h3>
+                    <p>The compiler toolchain is entirely Python-based. The robust regex scanner successfully tokenizes keywords, operators, and data types, utilizing explicit Enum token categories while expertly handling Python-style indentation mapping (INDENT/DEDENT scopes).</p>
+                </div>
+                <div class="card">
+                    <h3>2. Low-Level Power</h3>
+                    <p>Ion+ is built for systems programming. The syntax explicitly supports strict typing (<code>int</code>, <code>float</code>, <code>byte</code>), pointer manipulation (<code>ptr</code>), bitwise operations, custom <code>struct</code> and <code>enum</code> definitions, and memory allocation handling.</p>
+                </div>
+                <div class="card">
+                    <h3>3. Future LLVM Backend</h3>
+                    <p>The intended compiler pipeline is strictly defined: Python Frontend → Parser/AST → Semantic Validation → LLVM IR Code Generation. The ultimate goal is blistering machine-code execution.</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Low-Level Control</h3>
-                <p>Designed for memory-aware operations. Ion+ supports pointers, bitwise operations, custom structures, enums, and explicit memory allocation.</p>
-            </div>
-            <div class="card">
-                <h3>Future LLVM Backend</h3>
-                <p>The ultimate goal is lowering the Abstract Syntax Tree (AST) into LLVM IR for aggressive optimization, generating blazing-fast machine code.</p>
-            </div>
-        </div>
+        </section>
 
         <div class="code-window">
             <div class="code-header">
@@ -231,7 +313,7 @@
                 <div class="dot yellow"></div>
                 <div class="dot green"></div>
             </div>
-<pre><code><span class="comment"># Sample Ion+ syntax demonstrating structures and control flow</span>
+<pre><code><span class="comment"># Sample Ion+ syntax demonstrating structures, pointers, and control flow</span>
 <span class="keyword">struct</span> <span class="type">Buffer</span>:
     <span class="type">int</span> size
     <span class="type">ptr byte</span> data
@@ -241,24 +323,28 @@
         <span class="keyword">return none</span>
 
     <span class="type">int</span> index = 0
-    <span class="keyword">while</span> index < 10:
+    <span class="keyword">while</span> index < size:
         index += 1
 
     <span class="keyword">return</span> index</code></pre>
         </div>
 
-        <section class="overview">
-            <h2>Project Status</h2>
-            <p style="color: var(--text-muted); margin-top: 1rem;">
-                The project is currently conquering the frontend. The Lexer is fully operational, successfully scanning raw `.ionx` source files into token streams. The immediate next phase is building out the Recursive Descent Parser and structuring the AST nodes in Python.
-            </p>
-        </section>
+        <div class="roadmap">
+            <h3>Project Roadmap & Status</h3>
+            <ul>
+                <li class="done"><strong>Phase 1: Lexing (Completed)</strong> - Regex-based scanning, token definitions, and indentation tracking are fully implemented.</li>
+                <li><strong>Phase 2: Parsing & AST (In Progress)</strong> - Currently structuring Python nodes for Expressions, Declarations, and Control Flow.</li>
+                <li><strong>Phase 3: Semantics</strong> - Implementation of symbol tables, type checking, and scoped variable resolution.</li>
+                <li><strong>Phase 4: LLVM Backend</strong> - Mapping AST nodes to LLVM IR instructions for true compilation.</li>
+                <li><strong>Phase 5: OOP Expansion</strong> - Bringing full Object-Oriented paradigms into the low-level architecture.</li>
+            </ul>
+        </div>
     </main>
 
     <footer>
         <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
             <img src="LOGO.png" alt="Ion+ Logo Mini" class="footer-logo">
-            <p style="margin: 0;">Released under the Apache 2.0 License. Built by Yash Arya and the open-source community.</p>
+            <p style="margin: 0;">Released under the <strong>MIT License</strong>. Built by Yash Arya and the open-source community.</p>
         </div>
     </footer>
 
